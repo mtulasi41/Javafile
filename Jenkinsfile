@@ -12,7 +12,16 @@ pipeline {
                 sh 'echo maven version print'
                 sh 'mvn -version'
             }
-       
+       }
+        stage('Build'){
+            steps{
+                sh 'mvn clean package -DskipTests=true'
+            }
+        }
+        stage('Test'){
+            steps{
+                sh 'mvn test'
+            }
         }
     }
 }
